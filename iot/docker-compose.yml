@@ -8,7 +8,7 @@ x-camion: &camion
     API_URL: ${API_URL}
     IOT_SECRET: ${IOT_SECRET}
     INTERVALO: ${INTERVALO:-5}
-    PROB_FALLA: ${PROB_FALLA:-0.02}
+    PROB_FALLA: ${PROB_FALLA:-0.01}
   logging:
     driver: json-file
     options: { max-size: "5m", max-file: "2" }

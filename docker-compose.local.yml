@@ -29,14 +29,14 @@ services:
     build: ./iot
     depends_on: [app]
     restart: unless-stopped
-    environment: { CAMION_ID: CAM-001, PERFIL: CONGELADO, RUTA: villarrica, API_URL: "http://app:3000/api/telemetria", IOT_SECRET: iot-local, PROB_FALLA: "0.05" }
+    environment: { CAMION_ID: CAM-001, PERFIL: CONGELADO, RUTA: villarrica, API_URL: "http://app:3000/api/telemetria", IOT_SECRET: iot-local, PROB_FALLA: "0.01" }
   cam-002:
     build: ./iot
     depends_on: [app]
     restart: unless-stopped
-    environment: { CAMION_ID: CAM-002, PERFIL: CONGELADO, RUTA: angol, API_URL: "http://app:3000/api/telemetria", IOT_SECRET: iot-local, PROB_FALLA: "0.05" }
+    environment: { CAMION_ID: CAM-002, PERFIL: CONGELADO, RUTA: angol, API_URL: "http://app:3000/api/telemetria", IOT_SECRET: iot-local, PROB_FALLA: "0.01" }
   cam-004:
     build: ./iot
     depends_on: [app]
     restart: unless-stopped
-    environment: { CAMION_ID: CAM-004, PERFIL: REFRIGERADO, RUTA: pucon, API_URL: "http://app:3000/api/telemetria", IOT_SECRET: iot-local, PROB_FALLA: "0.05" }
+    environment: { CAMION_ID: CAM-004, PERFIL: REFRIGERADO, RUTA: pucon, API_URL: "http://app:3000/api/telemetria", IOT_SECRET: iot-local, PROB_FALLA: "0.01" }
