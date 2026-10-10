@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cofrial · CRM</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div id="nav"></div>
+<main class="container-fluid my-3">
+  <ul class="nav nav-pills mb-3 flex-wrap" id="tabs">
+    <li class="nav-item"><button class="nav-link active" data-tab="pipeline">Pipeline</button></li>
+    <li class="nav-item"><button class="nav-link" data-tab="clientes">Clientes</button></li>
+    <li class="nav-item"><button class="nav-link" data-tab="pedidos">Pedidos</button></li>
+    <li class="nav-item"><button class="nav-link" data-tab="despachos">Despachos</button></li>
+    <li class="nav-item"><button class="nav-link" data-tab="requerimientos">Requerimientos IA <span class="badge text-bg-danger" id="n-req"></span></button></li>
+  </ul>
+
+  <section data-panel="pipeline">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <p class="text-muted small mb-0">Arrastra una tarjeta para cambiar su etapa. Cada movimiento queda registrado en la ficha del cliente.</p>
+      <button class="btn btn-sm btn-cofrial" onclick="modalOportunidad()">+ Oportunidad</button>
+    </div>
+    <div class="kanban" id="kanban"></div>
+  </section>
+
+  <section data-panel="clientes" class="d-none">
+    <div class="d-flex gap-2 mb-2">
+      <input id="buscar-cli" class="form-control form-control-sm" style="max-width:300px" placeholder="Buscar por nombre, RUT o correo">
+      <button class="btn btn-sm btn-cofrial ms-auto" onclick="modalCliente()">+ Cliente o prospecto</button>
+    </div>
+    <div class="table-responsive"><table class="table table-sm table-hover bg-white align-middle" id="tabla-clientes"></table></div>
+  </section>
+
+  <section data-panel="pedidos" class="d-none">
+    <div class="d-flex gap-2 mb-2">
+      <select id="filtro-estado" class="form-select form-select-sm" style="max-width:220px">
+        <option value="">Todos los estados</option><option>PENDIENTE</option><option>CONFIRMADO</option>
+        <option>EN_PREPARACION</option><option>DESPACHADO</option><option>ENTREGADO</option><option>CANCELADO</option>
+      </select>
+      <button class="btn btn-sm btn-cofrial ms-auto" onclick="modalPedidoCRM()">+ Pedido telefónico</button>
+    </div>
+    <div class="table-responsive"><table class="table table-sm table-hover bg-white align-middle" id="tabla-pedidos"></table></div>
+  </section>
+
+  <section data-panel="despachos" class="d-none">
+    <div class="row g-3">
+      <div class="col-lg-4">
+        <div class="card"><div class="card-body">
+          <h2 class="h6">Nuevo despacho</h2>
+          <form id="form-despacho" class="vstack gap-2"></form>
+        </div></div>
+      </div>
+      <div class="col-lg-8"><div class="table-responsive"><table class="table table-sm bg-white align-middle" id="tabla-despachos"></table></div></div>
+    </div>
+  </section>
+
+  <section data-panel="requerimientos" class="d-none">
+    <p class="text-muted small">Mensajes recibidos desde la web, clasificados y priorizados por IA con una respuesta sugerida.</p>
+    <div class="table-responsive"><table class="table table-sm bg-white align-middle" id="tabla-req"></table></div>
+  </section>
+</main>
+
+<div class="modal fade" id="modal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title" id="modal-titulo"></h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body" id="modal-cuerpo"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/crm.js"></script>
+</body>
+</html>

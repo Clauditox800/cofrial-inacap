@@ -1,0 +1,22 @@
+{
+  "name": "cofrial-app",
+  "version": "1.0.0",
+  "description": "Cofrial SpA - E-commerce B2B/B2C, CRM, API IoT y dashboard BI",
+  "main": "src/server.js",
+  "private": true,
+  "scripts": {
+    "start": "node src/server.js",
+    "db:init": "node scripts/init-db.js",
+    "token": "node scripts/token-dispositivo.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "bcryptjs": "2.4.3",
+    "dotenv": "16.4.5",
+    "express": "5.1.0",
+    "jsonwebtoken": "9.0.2",
+    "mysql2": "3.11.5"
+  }
+}

@@ -1,0 +1,28 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno con credenciales reales (se versionan solo los .env.example)
+.env
+*.env
+!.env.example
+
+# Salidas del script de AWS y llaves SSH del Learner Lab
+recursos.env
+*.pem
+*.key
+
+# Logs
+*.log
+npm-debug.log*
+logs/
+
+# Python
+__pycache__/
+*.pyc
+
+# Sistema operativo / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

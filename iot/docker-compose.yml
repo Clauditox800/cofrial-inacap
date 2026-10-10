@@ -1,0 +1,31 @@
+# Nodo IoT: 5 camiones simulados, cada uno en su contenedor.
+# Uso en la EC2 IoT:  cp .env.example .env  (editar)  y luego  docker compose up -d --build
+x-camion: &camion
+  build: .
+  image: cofrial-sensor:1.0
+  restart: unless-stopped
+  environment: &env
+    API_URL: ${API_URL}
+    IOT_SECRET: ${IOT_SECRET}
+    INTERVALO: ${INTERVALO:-5}
+    PROB_FALLA: ${PROB_FALLA:-0.02}
+  logging:
+    driver: json-file
+    options: { max-size: "5m", max-file: "2" }
+
+services:
+  cam-001:
+    <<: *camion
+    environment: { <<: *env, CAMION_ID: CAM-001, PERFIL: CONGELADO, RUTA: villarrica }
+  cam-002:
+    <<: *camion
+    environment: { <<: *env, CAMION_ID: CAM-002, PERFIL: CONGELADO, RUTA: angol }
+  cam-003:
+    <<: *camion
+    environment: { <<: *env, CAMION_ID: CAM-003, PERFIL: CONGELADO, RUTA: imperial }
+  cam-004:
+    <<: *camion
+    environment: { <<: *env, CAMION_ID: CAM-004, PERFIL: REFRIGERADO, RUTA: pucon }
+  cam-005:
+    <<: *camion
+    environment: { <<: *env, CAMION_ID: CAM-005, PERFIL: REFRIGERADO, RUTA: lautaro }
